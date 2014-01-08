@@ -1,0 +1,42 @@
+{
+  "name": "grunt-codepainter",
+  "description": "Grunt plugin for codepainter-A JavaScript beautifier that can both infer coding style and transform code to reflect that style.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/bboyle/grunt-codepainter",
+  "author": {
+    "name": "Ben Boyle",
+    "email": "benjamins.boyle@gmail.com",
+    "url": "http://ultimate.benboyle.id.au"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bboyle/grunt-codepainter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bboyle/grunt-codepainter/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/bboyle/grunt-codepainter/blob/master/LICENSE-MIT"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.10.6"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt": "~0.4.2"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.2"
+  },
+  "keywords": [
+    "gruntplugin"
+  ]
+}
