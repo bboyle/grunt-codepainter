@@ -4,7 +4,8 @@
 
 ## Codepainter
 
-[Codepainter](https://github.com/jedmao/codepainter)
+This repo is a grunt plugin for [codepainter][codepainter]. Visit the site to learn more about how codepainter works.
+This readme will guide you through using codepainter in your grunt projects.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.2` and Node `0.10.6` (or newer).
@@ -50,7 +51,7 @@ grunt.initConfig({
 
 All values are optional.
 
-Refer to [codepainter] for details on how these options work.
+Refer to [codepainter][codepainter] for details on how these options work.
 
 #### options.infer
 Type: `String`
@@ -61,7 +62,7 @@ Example: `'src/perfectlyStyledScript.js'`
 #### options.predef
 Type: `String`
 
-Use one of the [codepainter] presets: 'idiomatic', 'hautelook' or 'mediawiki'.
+Use one of the [codepainter][codepainter] presets: 'idiomatic', 'hautelook' or 'mediawiki'.
 
 #### options.json
 Type: `String`
@@ -127,3 +128,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 0.0.1: initial release
+
+
+
+[Codepainter]: https://github.com/jedmao/codepainter
