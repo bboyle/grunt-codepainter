@@ -2,6 +2,10 @@
 
 > Grunt plugin for codepainter-A JavaScript beautifier that can both infer coding style and transform code to reflect that style.
 
+## Codepainter
+
+[Codepainter](https://github.com/jedmao/codepainter)
+
 ## Getting Started
 This plugin requires Grunt `~0.4.2`
 
@@ -25,11 +29,18 @@ In your project's Gruntfile, add a section named `codepainter` to the data objec
 ```js
 grunt.initConfig({
   codepainter: {
-    options: {
-      // Task-specific options go here.
-    },
-    your_target: {
-      // Target-specific file lists and/or options go here.
+    // individual files
+    static: {
+      options: {
+        predef: 'idiomatic',
+        style: {
+          indent_style: 'tab'
+        }
+      },
+      files: {
+        'dest/abc.js' : 'src/abc.js',
+        'dest/xyz.js' : 'src/xyz.js',
+      }
     },
   },
 });
@@ -37,17 +48,38 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
+All values are optional.
+
+Refer to [codepainter] for details on how these options work.
+
+#### options.infer
 Type: `String`
-Default value: `',  '`
 
-A string value that is used to do something with whatever.
+Path to a javascript file to infer rules from.
+Example: `'src/perfectlyStyledScript.js'`
 
-#### options.punctuation
+#### options.predef
 Type: `String`
-Default value: `'.'`
 
-A string value that is used to do something else with whatever else.
+Use one of the [codepainter] presets: 'idiomatic', 'hautelook' or 'mediawiki'.
+
+#### options.json
+Type: `String`
+
+Path to JSON configuration file containing style rules.
+Example: `'.codepaintrc'`
+
+#### options.style
+Type: `Object`
+
+Specify individual style rules to override the above.
+
+#### options.editorConfig
+Type: `String`
+
+Path to editor configuration file containing style rules. See [EditorConfig](http://editorconfig.org/) for details.
+Example: `'.editorconfig'`
+
 
 ### Usage Examples
 
@@ -66,19 +98,27 @@ grunt.initConfig({
 ```
 
 #### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
+In this example, custom options are used to overwrite all script files in the src directory.
 
 ```js
 grunt.initConfig({
   codepainter: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
+    // directories
+    dynamic: {
+      options: {
+        predef: 'idiomatic',
+        style: {
+          indent_style: 'tab'
+        }
+      },
+      files: [{
+        expand: true,       // Enable dynamic expansion
+        cwd: 'src/',        // Src matches are relative to this path
+        src: ['**/*.js'],   // Actual patterns to match
+        dest: 'src/'        // Destination path prefix
+      }]
+    }
+  }
 });
 ```
 
@@ -86,4 +126,4 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_(Nothing yet)_
+0.0.1: initial release
