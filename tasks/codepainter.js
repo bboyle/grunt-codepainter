@@ -14,36 +14,39 @@ module.exports = function(grunt) {
   // creation: http://gruntjs.com/creating-tasks
 
   grunt.registerMultiTask('codepainter', 'Grunt plugin for codepainter-A JavaScript beautifier that can both infer coding style and transform code to reflect that style.', function() {
-    // Merge task-specific and/or target-specific options with these defaults.
-    var options = this.options({
-      punctuation: '.',
-      separator: ', '
+    var done = this.async();
+    var Transformer = require('codepainter').Transformer;
+    var transformer = new Transformer();
+    var options = this.options();
+
+    transformer.on('transform', function(transformed, path) {
+      grunt.log.ok(transformed, path);
+    });
+    transformer.on('error', function(err, inputPath) {
+      grunt.log.error(err, inputPath);
+    });
+    transformer.on('end', function(err, transformed, skipped, errored) {
+      grunt.log.writeln('Codepainter: ' +
+        transformed + ' transformed, ' +
+        skipped + ' skipped, ' + 
+        errored + ' error' + ( errored === 1 ? '.' : 's.' )
+      );
+      done();
     });
 
+
     // Iterate over all specified file groups.
-    this.files.forEach(function(f) {
-      // Concat specified files.
-      var src = f.src.filter(function(filepath) {
-        // Warn on and remove invalid source files (if nonull was set).
-        if (!grunt.file.exists(filepath)) {
-          grunt.log.warn('Source file "' + filepath + '" not found.');
-          return false;
-        } else {
-          return true;
+    this.files.forEach(function(file) {
+      transformer.transform(
+        file.src,
+        {
+          predef: options.predef,
+          style: {
+            indent_style: options.style.indent_style
+          },
+          output: file.dest
         }
-      }).map(function(filepath) {
-        // Read file source.
-        return grunt.file.read(filepath);
-      }).join(grunt.util.normalizelf(options.separator));
-
-      // Handle options.
-      src += options.punctuation;
-
-      // Write the destination file.
-      grunt.file.write(f.dest, src);
-
-      // Print a success message.
-      grunt.log.writeln('File "' + f.dest + '" created.');
+      );
     });
   });
 

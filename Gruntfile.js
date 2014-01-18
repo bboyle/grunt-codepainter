@@ -30,22 +30,36 @@ module.exports = function(grunt) {
 
     // Configuration to be run (and then tested).
     codepainter: {
-      default_options: {
+      // static: {                          // Target
+      //   options: {                       // Target options
+      //     optimizationLevel: 3
+      //   },
+      //   files: {                         // Dictionary of files
+      //     'dist/img.png': 'src/img.png', // 'destination': 'source'
+      //     'dist/img.jpg': 'src/img.jpg',
+      //     'dist/img.gif': 'src/img.gif'
+      //   }
+      // },
+      static: {
         options: {
+          predef: 'idiomatic',
+          style: {
+            indent_style: 'tab'
+          }
         },
         files: {
-          'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123'],
-        },
+          // TODO make this work with 2 files (async)
+          'tmp/whitespace.js' : 'test/fixtures/whitespace.js',
+        }
       },
-      custom_options: {
-        options: {
-          separator: ': ',
-          punctuation: ' !!!',
-        },
-        files: {
-          'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123'],
-        },
-      },
+      // dynamic: {                         // Another target
+      //   files: [{
+      //     expand: true,                  // Enable dynamic expansion
+      //     cwd: 'src/',                   // Src matches are relative to this path
+      //     src: ['**/*.{png,jpg,gif}'],   // Actual patterns to match
+      //     dest: 'dist/'                  // Destination path prefix
+      //   }]
+      // }
     },
 
     // Unit tests.
