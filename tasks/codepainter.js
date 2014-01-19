@@ -14,30 +14,58 @@ module.exports = function(grunt) {
   // creation: http://gruntjs.com/creating-tasks
 
   grunt.registerMultiTask('codepainter', 'Grunt plugin for codepainter-A JavaScript beautifier that can both infer coding style and transform code to reflect that style.', function() {
-    var done = this.async();
-    var Transformer = require('codepainter').Transformer;
-    var transformer = new Transformer();
+    // check files and options
     var options = this.options();
 
-    transformer.on('transform', function(transformed, path) {
-      grunt.log.ok(transformed, path);
-    });
-    transformer.on('error', function(err, inputPath) {
+    // async task
+    var done = this.async();
+    var totalFiles = this.files.length;
+    var progress = {
+      transformed: 0, 
+      skipped: 0,
+      errored: 0
+    };
+
+    // track codepainter events
+    var onTransform = function(transformed, path) {
+      grunt.log.ok('codepainter', transformed, path);
+    };
+    var onError = function(err, inputPath) {
       grunt.log.error(err, inputPath);
-    });
-    transformer.on('end', function(err, transformed, skipped, errored) {
-      grunt.log.writeln('Codepainter: ' +
-        transformed + ' transformed, ' +
-        skipped + ' skipped, ' + 
-        errored + ' error' + ( errored === 1 ? '.' : 's.' )
-      );
-      done();
-    });
+    };
+    var onEnd = function(err, transformed, skipped, errored) {
+      var logType;
+      progress.transformed += transformed;
+      progress.skipped += skipped;
+      progress.errored += errored;
 
+      if ( progress.transformed + progress.skipped + progress.errored >= totalFiles ) {
+        grunt.log[ errored ? 'error' : skipped ? 'warn' : 'ok' ]('Codepainter: ' +
+          progress.transformed + ' transformed, ' +
+          progress.skipped + ' skipped, ' + 
+          progress.errored + ' error' + (progress.errored === 1 ? '.' : 's.')
+        );
+        done();
+      }
+    };
 
-    // Iterate over all specified file groups.
+    // setup transformer
+    var Transformer = require('codepainter').Transformer;
+    function getTransformer() {
+      var transformer = new Transformer();
+
+      transformer.on('transform', onTransform);
+      transformer.on('error', onError);
+      transformer.on('end', onEnd);
+
+      return transformer;
+    }
+
+    // for each file
     this.files.forEach(function(file) {
-      transformer.transform(
+      grunt.verbose.writeln('codepaint: transformer.transform '+file.src+' -> '+file.dest);
+      // transform
+      getTransformer().transform(
         file.src,
         {
           predef: options.predef,

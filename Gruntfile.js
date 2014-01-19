@@ -48,8 +48,8 @@ module.exports = function(grunt) {
           }
         },
         files: {
-          // TODO make this work with 2 files (async)
           'tmp/whitespace.js' : 'test/fixtures/whitespace.js',
+          'tmp/idiomatic.js' : 'test/fixtures/idiomatic.js',
         }
       },
       // dynamic: {                         // Another target

@@ -27,22 +27,18 @@ exports.codepainter = {
     // setup here if necessary
     done();
   },
-  idiomatic: function(test) {
-    test.expect(1);
+  static: function(test) {
+    var fixtures = 'whitespace.js,idiomatic.js'.split(',');
+    var actual, expected;
 
-    var actual = grunt.file.read('tmp/whitespace.js');
-    var expected = grunt.file.read('test/expected/whitespace.js');
-    test.equal(actual, expected, 'whitespace source file was processed by codepainter');
+    test.expect(fixtures.length);
+
+    for (var i = 0; i < fixtures.length; i++) {
+      actual = grunt.file.read('tmp/'+fixtures[i]);
+      expected = grunt.file.read('test/expected/'+fixtures[i]);
+      test.equal(actual, expected, fixtures[i]+' was processed by codepainter');
+    }
 
     test.done();
-  },
-  // custom_options: function(test) {
-  //   test.expect(1);
-
-  //   var actual = grunt.file.read('tmp/custom_options');
-  //   var expected = grunt.file.read('test/expected/custom_options');
-  //   test.equal(actual, expected, 'should describe what the custom option(s) behavior is.');
-
-  //   test.done();
-  // },
+  }
 };
