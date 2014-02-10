@@ -52,14 +52,21 @@ module.exports = function(grunt) {
           'tmp/idiomatic.js' : 'test/fixtures/idiomatic.js',
         }
       },
-      // dynamic: {                         // Another target
-      //   files: [{
-      //     expand: true,                  // Enable dynamic expansion
-      //     cwd: 'src/',                   // Src matches are relative to this path
-      //     src: ['**/*.{png,jpg,gif}'],   // Actual patterns to match
-      //     dest: 'dist/'                  // Destination path prefix
-      //   }]
-      // }
+
+      dynamic: {
+        options: {
+          predef: 'idiomatic',
+          style: {
+            indent_style: 'tab'
+          }
+        },
+        files: [{
+          expand: true,
+          cwd: 'test/fixtures/',
+          src: ['*.js'],
+          dest: 'tmp/dynamic/'
+        }]
+      }
     },
 
     // Unit tests.

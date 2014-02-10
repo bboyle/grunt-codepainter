@@ -27,6 +27,7 @@ exports.codepainter = {
     // setup here if necessary
     done();
   },
+
   static: function(test) {
     var fixtures = 'whitespace.js,idiomatic.js'.split(',');
     var actual, expected;
@@ -35,6 +36,21 @@ exports.codepainter = {
 
     for (var i = 0; i < fixtures.length; i++) {
       actual = grunt.file.read('tmp/'+fixtures[i]);
+      expected = grunt.file.read('test/expected/'+fixtures[i]);
+      test.equal(actual, expected, fixtures[i]+' was processed by codepainter');
+    }
+
+    test.done();
+  },
+
+  dynamic: function(test) {
+    var fixtures = 'whitespace.js,idiomatic.js'.split(',');
+    var actual, expected;
+
+    test.expect(fixtures.length);
+
+    for (var i = 0; i < fixtures.length; i++) {
+      actual = grunt.file.read('tmp/dynamic/'+fixtures[i]);
       expected = grunt.file.read('test/expected/'+fixtures[i]);
       test.equal(actual, expected, fixtures[i]+' was processed by codepainter');
     }
