@@ -1,4 +1,4 @@
-[![Travis build status](https://travis-ci.org/bboyle/grunt-codepainter.png?branch=master)](https://travis-ci.org/bboyle/grunt-codepainter)
+[![Build Status](https://travis-ci.org/bboyle/grunt-codepainter.svg?branch=master)](https://travis-ci.org/bboyle/grunt-codepainter)
 [![Dependency Status](https://david-dm.org/bboyle/grunt-codepainter.svg)](https://david-dm.org/bboyle/grunt-codepainter)
 [![devDependency Status](https://david-dm.org/bboyle/grunt-codepainter/dev-status.svg)](https://david-dm.org/bboyle/grunt-codepainter#info=devDependencies)
 
