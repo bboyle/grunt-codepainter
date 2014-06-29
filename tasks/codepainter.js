@@ -15,13 +15,21 @@ module.exports = function(grunt) {
 
   grunt.registerMultiTask('codepainter', 'Grunt plugin for codepainter-A JavaScript beautifier that can both infer coding style and transform code to reflect that style.', function() {
     // check files and options
+    var fs = require('fs');
     var options = this.options();
+    var style;
+
+    if (options.json) {
+      style = JSON.parse(fs.readFileSync(options.json));
+    } else {
+      style = options.style || {};
+    }
 
     // async task
     var done = this.async();
     var totalFiles = this.files.length;
     var progress = {
-      transformed: 0, 
+      transformed: 0,
       skipped: 0,
       errored: 0
     };
@@ -42,7 +50,7 @@ module.exports = function(grunt) {
       if ( progress.transformed + progress.skipped + progress.errored >= totalFiles ) {
         grunt.log[ errored ? 'error' : skipped ? 'warn' : 'ok' ]('Codepainter: ' +
           progress.transformed + ' transformed, ' +
-          progress.skipped + ' skipped, ' + 
+          progress.skipped + ' skipped, ' +
           progress.errored + ' error' + (progress.errored === 1 ? '.' : 's.')
         );
         done();
@@ -69,9 +77,7 @@ module.exports = function(grunt) {
         file.src,
         {
           predef: options.predef,
-          style: {
-            indent_style: options.style.indent_style
-          },
+          style: style,
           output: file.dest
         }
       );
