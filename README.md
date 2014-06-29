@@ -1,3 +1,6 @@
+[![dependencies](https://david-dm.org/bboyle/grunt-codepainter/dev-status.png)](https://david-dm.org/bboyle/grunt-codepainter#info=dependencies)
+[![devDependencies](https://david-dm.org/bboyle/grunt-codepainter/dev-status.png)](https://david-dm.org/bboyle/grunt-codepainter#info=devDpendencies)
+
 # grunt-codepainter
 
 > Grunt plugin for codepainter-A JavaScript beautifier that can both infer coding style and transform code to reflect that style.
