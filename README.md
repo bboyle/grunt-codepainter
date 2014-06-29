@@ -1,5 +1,5 @@
-[![dependencies](https://david-dm.org/bboyle/grunt-codepainter/dev-status.png)](https://david-dm.org/bboyle/grunt-codepainter#info=dependencies)
-[![devDependencies](https://david-dm.org/bboyle/grunt-codepainter/dev-status.png)](https://david-dm.org/bboyle/grunt-codepainter#info=devDpendencies)
+[![Dependency Status](https://david-dm.org/bboyle/grunt-codepainter.svg)](https://david-dm.org/bboyle/grunt-codepainter)
+[![devDependency Status](https://david-dm.org/bboyle/grunt-codepainter/dev-status.svg)](https://david-dm.org/bboyle/grunt-codepainter#info=devDependencies)
 
 # grunt-codepainter
 
