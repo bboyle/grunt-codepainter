@@ -37,7 +37,14 @@
     "grunt": "~0.4.5"
   },
   "keywords": [
-    "gruntplugin codepainter prettify prettifier beautify beautifier idiomatic idiomaticjs"
+    "gruntplugin",
+    "codepainter",
+    "prettify",
+    "prettifier",
+    "beautify",
+    "beautifier",
+    "idiomatic",
+    "idiomaticjs"
   ],
   "dependencies": {
     "codepainter": "~0.3.30"
