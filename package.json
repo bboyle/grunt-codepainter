@@ -47,6 +47,6 @@
     "idiomaticjs"
   ],
   "dependencies": {
-    "codepainter": "~0.3.30"
+    "codepainter": "~0.3.31"
   }
 }
