@@ -132,10 +132,5 @@ grunt.initConfig({
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
-## Release History
-0.0.1: initial release (process a single file)
-0.1.0: task runs on multiple named files
-0.2.0: task runs on directory/glob patterns
-
 
 [Codepainter]: https://github.com/jedmao/codepainter
