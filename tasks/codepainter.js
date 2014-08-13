@@ -77,6 +77,7 @@ module.exports = function(grunt) {
         file.src,
         {
           predef: options.predef,
+          editorConfig: options.editorConfig,
           style: style,
           output: file.dest
         }
