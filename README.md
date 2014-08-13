@@ -82,11 +82,9 @@ Type: `Object`
 Specify individual style rules to override the above.
 
 #### options.editorConfig
-Type: `String`
+Type: `Boolean`
 
-Path to editor configuration file containing style rules. See [EditorConfig](http://editorconfig.org/) for details.
-Example: `'.editorconfig'`
-
+Get styles from EditorConfig files. See [EditorConfig](http://editorconfig.org/) for details.
 
 ### Usage Examples
 
