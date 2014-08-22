@@ -1,0 +1,8 @@
+[*.js]
+
+insert_final_newline = true
+indent_style = tab
+indent_size = 2
+space_after_control_statements = true
+spaces_around_operators = true
+spaces_in_brackets = hybrid

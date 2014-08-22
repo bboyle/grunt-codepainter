@@ -66,13 +66,23 @@ module.exports = function(grunt) {
           src: ['*.js'],
           dest: 'tmp/dynamic/'
         }]
+      },
+
+      editorConfig: {
+        options: {
+          editorConfig: true
+        },
+        files: {
+          'tmp/editorconfig/whitespace.js' : 'test/fixtures/whitespace.js',
+          'tmp/editorconfig/idiomatic.js' : 'test/fixtures/idiomatic.js'
+        }
       }
     },
 
     // Unit tests.
     nodeunit: {
       tests: ['test/*_test.js'],
-    },
+    }
 
   });
 
