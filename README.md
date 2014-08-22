@@ -132,8 +132,8 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Thanks
 
-- @jedmao for [Codepainter]!
-- @dlukez for adding EditorConfig support to this plugin
+- [@jedmao](https://github.com/jedmao) for [Codepainter]!
+- [@dlukez](https://github.com/dlukez) for adding EditorConfig support to this plugin
 
 
 [Codepainter]: https://github.com/jedmao/codepainter
