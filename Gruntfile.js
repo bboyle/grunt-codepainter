@@ -13,34 +13,23 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     jshint: {
+      options: { jshintrc: '.jshintrc' },
       all: [
         'Gruntfile.js',
+        'package.json',
         'tasks/*.js',
-        '<%= nodeunit.tests %>',
-      ],
-      options: {
-        jshintrc: '.jshintrc',
-      },
+        '<%= nodeunit.tests %>'
+      ]
     },
 
     // Before generating any new files, remove any previously-created files.
     clean: {
-      tests: ['tmp'],
+      tests: ['tmp']
     },
 
     // Configuration to be run (and then tested).
     codepainter: {
-      // static: {                          // Target
-      //   options: {                       // Target options
-      //     optimizationLevel: 3
-      //   },
-      //   files: {                         // Dictionary of files
-      //     'dist/img.png': 'src/img.png', // 'destination': 'source'
-      //     'dist/img.jpg': 'src/img.jpg',
-      //     'dist/img.gif': 'src/img.gif'
-      //   }
-      // },
-      static: {
+      'static': {
         options: {
           predef: 'idiomatic',
           style: {
@@ -49,7 +38,7 @@ module.exports = function(grunt) {
         },
         files: {
           'tmp/whitespace.js' : 'test/fixtures/whitespace.js',
-          'tmp/idiomatic.js' : 'test/fixtures/idiomatic.js',
+          'tmp/idiomatic.js' : 'test/fixtures/idiomatic.js'
         }
       },
 
@@ -81,7 +70,7 @@ module.exports = function(grunt) {
 
     // Unit tests.
     nodeunit: {
-      tests: ['test/*_test.js'],
+      tests: ['test/*_test.js']
     }
 
   });

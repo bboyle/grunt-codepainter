@@ -28,7 +28,7 @@ exports.codepainter = {
     done();
   },
 
-  static: function(test) {
+  'static': function(test) {
     var fixtures = 'whitespace.js,idiomatic.js'.split(',');
     var actual, expected;
 
