@@ -8,6 +8,16 @@
     "email": "benjamins.boyle@gmail.com",
     "url": "http://ultimate.benboyle.id.au"
   },
+  "contributors": [
+    {
+      "name": "Daniel Zimmermann",
+      "url": "https://github.com/dlukez"
+    },
+    {
+      "name": "Jeremy Kahn",
+      "url": "https://github.com/jeremyckahn"
+    },
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/bboyle/grunt-codepainter.git"
